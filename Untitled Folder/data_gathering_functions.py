@@ -1,3 +1,9 @@
+import pandas as pd
+import numpy as np
+from collections import defaultdict
+
+
+
 def getKills(game):
     kills = []
     for frame in game['info']['frames'][0:16]:
@@ -91,23 +97,23 @@ def getELITE_MONSTER_KILL(game):
     for frame in game['info']['frames'][0:16]:
         for event in frame['events']:
             if event['type'] == 'ELITE_MONSTER_KILL':
-                ELITE_MONSTER_KILL.append(event) 
-    ELITE_MONSTER_KILL = pd.DataFrame(ELITE_MONSTER_KILL)
-    if 'monsterSubType' in ELITE_MONSTER_KILL.columns:
-        return ELITE_MONSTER_KILL[['killerTeamId','monsterType', 'monsterSubType']]
+                ELITE_MONSTER_KILL.append(event)
+    ELITE_MONSTER_KILL_df = pd.DataFrame(ELITE_MONSTER_KILL)
+    if 'monsterSubType' in ELITE_MONSTER_KILL_df.columns:
+        return ELITE_MONSTER_KILL_df[['killerTeamId','monsterType', 'monsterSubType']]
     else:
-        if len(ELITE_MONSTER_KILL.columns) >= 1:
-            ELITE_MONSTER_KILL['monsterSubType'] = ELITE_MONSTER_KILL['monsterType'].replace('DRAGON',0)
-            return ELITE_MONSTER_KILL[['killerTeamId','monsterType', 'monsterSubType']]
+        if len(ELITE_MONSTER_KILL_df.columns) >= 1:
+            ELITE_MONSTER_KILL_df['monsterSubType'] = ELITE_MONSTER_KILL_df['monsterType'].replace('DRAGON',0)
+            return ELITE_MONSTER_KILL_df[['killerTeamId','monsterType', 'monsterSubType']]
         else:
-            return None
+            return pd.DataFrame(data = [[0,0,0]], columns = ['killerTeamId','monsterType', 'monsterSubType'])
         
 
 def getwin(game):
     getoutcome = {}
-    for outcome in pd.DataFrame(game)['info'][15]:
+    for outcome in pd.DataFrame(pd.DataFrame(game)['info']).T['teams'][0]:
         if outcome['win'] == True:
-             getoutcome.update({outcome['teamId']:outcome['win']})
+             getoutcome.update({outcome['teamId']:outcome['win']})          
     if list(getoutcome.keys())[0] == 100:
         return 'Blue'
     else:
