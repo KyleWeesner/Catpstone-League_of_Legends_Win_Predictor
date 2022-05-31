@@ -7,12 +7,11 @@
 
 ## Overview
 
-This project outlines the process of data collection using riots api for data to train algorithms to predict winnability of a game at 15 mins.  This project is a starting model and application to run alongside with a game as a helper tool for more time efficient rank grinding for serious gamers.  I am here to pitch this model to Swift gaming company to be used in the Blitz app for gamers use that will eventually run side by side as a win predictor tool.  
+This project outlines the process of data collection using riots api for data to train algorithms to predict winnability of a game at 15 mins.  This win predicting model and its application that is meant to be used alongside with a games as a helper tool for more time efficient rank grinding for serious gamers.  I am here to pitch this model to Swift gaming company to be used in the Blitz app for gamers use that will be ran side by side as a win predictor tool.  
 
 ## Business Problem
 
-Ranked games in League of Legends is 
-When playing League of Legends games take a consumable amount of time to play, so being able to know if moving on to the next game and surrendering sometimes can be a wise choice.  By being able to predict winnability at certain moments of the game one can attempt to save time by moving on to the next game or will know if its worth staying in the game to continuing to attempt to win.
+Playing League of Legends games take a consumable amount of time to play, so being able to know if moving on to the next game and surrendering sometimes can be a wise choice.  By being able to predict winnability at certain moments of the game one can attempt to save time by moving on to the next game or will know if its worth staying in the game to continuing to attempt to win.
  
 ## Data
 Data was acquired through [riots developer portal](https://developer.riotgames.com/).  An account with riot is required along with agreeing with their general policies, terms, and agreements to have access to an api key.  Functions for data collection are located in `data_gathering_functions.py` and the process for collecting my dataset is located at `Web_scraping_for_Final_Dataset.ipynb`. 
@@ -41,14 +40,14 @@ Model Proformance Metrics
 
 The final model had decent proformance metrics.  Final model's accuracy on the test set is 0.95. Final model's precision on the test set is 0.81. Final model's recall on the test set is 0.8. Final model's f1-score on the test is 0.81.  
 
-![img](./images/confusion_matrix.png)
+<!-- ![img](./images/confusion_matrix.png) -->
 
 
 Model Improvements
 
 The predictive models took in 15 features that contributes accuracy scores.  As we can see the model was slightly being improved throughout the iterative process.  Our final model was our best model which was GradientBoostingClassifier after being tuned.   
 
-![img](./images/model_improvement.jpg)
+<!-- ![img](./images/model_improvement.jpg) -->
 
 ## App Deployment
 
