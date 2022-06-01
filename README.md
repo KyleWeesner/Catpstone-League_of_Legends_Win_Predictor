@@ -2,21 +2,23 @@
  
  
 **Author: Kyle Weesner**
+Note: github/linked/email
  
 ![img](https://wallpaperaccess.com/full/217097.jpg)
 
+
 ## Overview
 
-This project outlines the process of data collection using riots api to train algorithms to predict winnability of a game at 15 mins.  This win predicting model and its application is meant to be used alongside with games as a helper tool for more time efficient rank grinding for serious gamers.  I am here to pitch this model to Swift gaming company to be used in the Blitz app for gamers use that will be ran side by side as a win predictor tool.  
+This project outlines the process of data collection, using Riots API to train algorithms.  We are doing this to predict the winnability of a game at 15 mins.  This win predicting model and its app is meant to be used as a time efficient rank climbing helper tool to help more serious gamers.  I'm here to pitch this model to Swift Gaming Company, to be used in the Blitz App for gamers.  This model will be used side by side as a win predictor tool.  
 
 ## Business Problem
 
-Playing ranked games of League of Legends take a consumable amount of time to play, so being able to know if moving on to the next game and surrendering sometimes can be a wise choice.  By being able to predict winnability at certain moments of the game one can attempt to save time by moving on to the next game or will know if its worth staying in the game continuing to attempt to win.
+Playing ranked games of League of Legends can take consumable amount of time.  At the fifteen minute mark, you have the option to surrender.  My model will predict whether your team will win or not at the fifteen minute mark.  Being able to know if you're going to win the match or not can save time for the losing team.  The losing team will have the option to surrender instead of playing the remainder of the game.
  
 ## Data
-Data was acquired through [riots developer portal](https://developer.riotgames.com/).  An account with riot is required along with agreeing with their general policies, terms, and agreements to have access to an api key.  Functions for data collection are located in `data_gathering_functions.py` and the process for collecting my dataset is located at [Web_scraping_for_Final_Dataset.ipynb](https://github.com/KyleWeesner/Catpstone-exploration/blob/main/Untitled_Folder/Web_scraping_for_Final_Dataset.ipynb). 
+Data was acquired through [Riots Developer Portal](https://developer.riotgames.com/).  An account with Riot is required along with agreeing with their general policies to have access to their API key.  Functions for data collection are located in `data_gathering_functions.py` and the process for collecting my dataset is located [Web_scraping_for_Final_Dataset](https://github.com/KyleWeesner/Catpstone-exploration/blob/main/Untitled_Folder/Web_scraping_for_Final_Dataset.ipynb). 
 
-Features that went into the model that were gathered for both blue and red team per game:
+Features that went into the model were:
 - Kills
 - VisionScore 
 - Assists
@@ -30,14 +32,14 @@ Features that went into the model that were gathered for both blue and red team 
 
  
 ## Tools
-The predictive models were made with a combination between the data and tools used in this project. 
-- Pandas for datafram manipulation and data analysis.  
+The predictive models were made with a combination of the data and the tools listed below:
+- Pandas for dataframe manipulation and data analysis.  
 - Sklearn for statistical modeling and machine learning.
-- Streamlit for app building  
+- Streamlit for app building.  
 
 ## Navigation
 
-Follow through these notebooks in order to follow workflow.  They can be found in the workspace folder in this repository.
+Follow these notebooks in order for the workflow.
 
 1. [Webscraping/ Data Collection](https://github.com/KyleWeesner/Catpstone-exploration/blob/main/Untitled_Folder/Web_scraping_for_Final_Dataset.ipynb)
 
@@ -47,31 +49,31 @@ Follow through these notebooks in order to follow workflow.  They can be found i
 
 ## Results
 
-Many different types of algorithms were used for modeling.  All of the models here had relatively the same cross val scores so deciding on the final model for the app was based on how fast the model is is able to predict on data.  Because League of Legends is a constantly changing game models will need to be re-trained depending on the season/ patch.  In this project LogisticRegression had the fastest training speed. This data was collect for games in Season 12.  It appears that there may be a "ceiling" for how well our models can predict.  Most models were around the same accuracy, so more features may be needed for improving model performance.
+There were many types of algorithms that were used for modeling.  All of the models had relatively the same cross-val scores.  Deciding on the final model for the app was based on how fast the model was able to predict on the data.  Because League of Legends is a constantly updating their gameplay, some of my models will need to be re-trained depending on the season/ update. This data was collected during Season 12.
+
+If you look below at my plot, it appears that there may be a cap for how well my models can predict.  Most of my models were around the same accuracy, so more features may be needed for improving my model performance.
 
 ![img](./images/model_improvement.jpg)
 
-Looking at the models developed prediction speed on the training data LogisticRegression is the fastest prediction model.  It is important to have more computationally faster models, so with this information the final model decided on is LogisticRegression.  The model is well fitted with the training data, performs well on unseen data, and is the fastest at predicting. 
+All of my models had the same accuracy.  The second most important factor was the speed of my models.  Having a faster computational speed determined my model for my app.  That model was LogisticRegression. 
 
 ![img](./images/models_prediction_speed.jpg)
 
 &nbsp;
 
 
-The final model's accuracy on the test set is 0.77.  The data is split about 50/50 between blue team and red team wining.  This is good because playing on left side or right side does not influence the game in higher ranks.
+The final model's accuracy score on the test set was 0.77.  The data was split about 50/50 on the winning percentage between the blue team and the red team.  This was great because playing on the left side or the right side had no bias to influence the chance of winning the game.  
 
 ![img](./images/confusion_matrix.png)
 
 
-
-
 ## App Deployment
 
-Due to legal agreements this app will not be publically avaiable on a website until product get registered and approved by riot.
+Due to legal agreements this app will not be publically available on a website until the product gets registered and approved by Riot Games.
 
 
-## Conclusions
-My model can be a useful application in the blitz app for league of legend gamers who are wanting to play rank being time efficient.  The final model was a LogististicRegression algorithm with a 77% accuracy on unseen data.
+## Conclusion
+My model can be a useful application in the Blitz App for League of Legend gamers who are wanting to play a ranked match while being efficient with their time.  The final model used was a LogististicRegression Algorithm with a 77% accuracy on unseen data.
 
 
  # Note:Clean up Repo and make structure
@@ -94,9 +96,9 @@ My model can be a useful application in the blitz app for league of legend gamer
 
 - Look into predicting games in every rank
 
-- Develope functions for the app to gather live game data so the user will not need to input every feature.
+- Develop functions for the app to gather live game data so the user will not need to input every feature.
 
-- Develope a prediction tool that will run alongside during any point in a game that will have a constantly changing win rate.
+- Develop a prediction tool that updates the winning percentage as the game progresses.
 
 
 
