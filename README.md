@@ -9,15 +9,15 @@
 
 ## Overview
 
-This project outlines the process of data collection, using Riots API to train algorithms.  We are doing this to predict the winnability of a game at 15 mins.  This win predicting model and its app is meant to be used as a time efficient rank climbing helper tool to help more serious gamers.  I'm here to pitch this model to Swift Gaming Company, to be used in the Blitz App for gamers.  This model will be used side by side as a win predictor tool.  
+This project outlines the process of data collection, using Riots API to train algorithms.  We are doing this to predict the winnability of a game at fifteen mins.  This win predicting model and its app is meant to be used as a time efficient rank climbing helper tool to help more serious gamers.  I'm here to pitch this model to Swift Gaming Company, to be used in the Blitz App for gamers.  This model will be used side by side as a win predictor tool.  
 
 ## Business Problem
 
-Playing ranked games of League of Legends can take consumable amount of time.  An average game can take between 30-40 minutes.  At the fifteen minute mark, you have the option to surrender.  My model will predict whether your team will win or not at the fifteen minute mark.  Being able to know if you're going to win the match or not can save time for the losing team.  The losing team will have the option to surrender instead of playing the remainder of the game.  This app will be important for serious gamers who want to get in as many games possible in hope to maximize the amount of wins per gaming session.
+Playing ranked games of League of Legends can take consumable amount of time.  An average game can take between thirty to forty minutes.  At the fifteen minute mark, you have the option to surrender.  My model will predict whether your team will win or not at the fifteen minute mark.  Being able to know if you're going to win the match or not can save time for the losing team.  The losing team will have the option to surrender instead of playing the remainder of the game.  This app will be important for serious gamers who want to get in as many games possible in hope to maximize the amount of wins per gaming session.
 
  
 ## Data
-Data was acquired through [Riots Developer Portal](https://developer.riotgames.com/).  An account with Riot is required along with agreeing with their general policies to have access to their API key.  Functions for data collection are located in `data_gathering_functions.py` and the process for collecting my dataset is located [Web_scraping_for_Final_Dataset](https://github.com/KyleWeesner/Catpstone-exploration/blob/main/Untitled_Folder/Web_scraping_for_Final_Dataset.ipynb). Match data were collected in season 12.
+Data was acquired through [Riots Developer Portal](https://developer.riotgames.com/).  An account with Riot is required along with agreeing with their general policies to have access to their API key.  Functions for data collection are located in `data_gathering_functions.py` and the process for collecting my dataset is located [Web_scraping_for_Final_Dataset](https://github.com/KyleWeesner/Catpstone-exploration/blob/main/Untitled_Folder/Web_scraping_for_Final_Dataset.ipynb). Match data were collected in season twelve.
 
 Features that went into the model were:
 - Kills
