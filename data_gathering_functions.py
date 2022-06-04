@@ -2,9 +2,15 @@ import pandas as pd
 import numpy as np
 from collections import defaultdict
 
-
+#Used riotwatcher.lolwatcher() as an API wrapper for these functions
 
 def getKills(game):
+    """
+    Returns a list of the teams kills at 15 minutes. 
+    output: [Blue Team, Red Team]
+    input: game = lol_watcher.match.timeline_by_match()
+    """
+    
     kills = []
     for frame in game['info']['frames'][0:16]:
         for event in frame['events']:
@@ -20,6 +26,13 @@ def getKills(game):
     return [blue_team_kills,red_team_kills]
 
 def getVisionScore(game):
+    """
+    Returns a list of the teams Vision Score at 15 minutes.  
+    This is a not the true value.  This is a calculated value from the number of wards placed + wards destroyed
+    output: [Blue Team, Red Team]
+    input: game = lol_watcher.match.timeline_by_match()
+    """
+    
     wardsK = defaultdict(int)
     wardsP = defaultdict(int)
     wardinfo = [wardsP, wardsK]
@@ -47,6 +60,12 @@ def getVisionScore(game):
     return [blue_team,red_team]
 
 def getAssists(game):
+    """
+    Returns a list of the teams assists at 15 minutes. 
+    output: [Blue Team, Red Team]
+    input: game = lol_watcher.match.timeline_by_match()
+    """
+    
     assists = []
     for frame in game['info']['frames'][0:16]:
         for event in frame['events']:
@@ -70,6 +89,12 @@ def getAssists(game):
     return [blue_team,red_team]
 
 def getcs(game):
+    """
+    Returns a list of the teams creep score(cs) at 15 minutes. 
+    output: [Blue Team, Red Team]
+    input: game = lol_watcher.match.timeline_by_match()
+    """
+    
     participants_15 = pd.DataFrame.from_dict(pd.DataFrame(pd.DataFrame(game)['info'][4])['participantFrames'][15])
     participants_15_df = participants_15.T[['participantId','jungleMinionsKilled','minionsKilled','level']]
     participants_15_df['cs'] = participants_15_df['jungleMinionsKilled'] + participants_15_df['minionsKilled']
@@ -82,6 +107,12 @@ def getcs(game):
 
 
 def getlevel(game):
+    """
+    Returns a list of the teams levels at 15 minutes. 
+    output: [Blue Team, Red Team]
+    input: game = lol_watcher.match.timeline_by_match()
+    """
+    
     participants_15 = pd.DataFrame.from_dict(pd.DataFrame(pd.DataFrame(game)['info'][4])['participantFrames'][15])
     participants_15_df = participants_15.T[['participantId','jungleMinionsKilled','minionsKilled','level']]
     blank_df = pd.DataFrame({'player':[1,2,3,4,5,6,7,8,9,10]}) 
@@ -91,8 +122,13 @@ def getlevel(game):
     red_team = game_levels['level'][5:].sum()
     return [blue_team, red_team]
 
-ELITE_MONSTER_KILL = []
+
 def getELITE_MONSTER_KILL(game):
+    """
+    Returns a data frame of each instance that an elite monster was killed in the first 15 minutes with columns = ['killerTeamId','monsterType', 'monsterSubType']. 
+    input: game = lol_watcher.match.timeline_by_match()
+    """
+    
     ELITE_MONSTER_KILL = []
     for frame in game['info']['frames'][0:16]:
         for event in frame['events']:
@@ -110,6 +146,12 @@ def getELITE_MONSTER_KILL(game):
         
 
 def getwin(game):
+    """
+    Returns the team that won the game(Blue or Red)
+    input:
+    game = lol_watcher.match.by_id()
+    """
+    
     getoutcome = {}
     for outcome in pd.DataFrame(pd.DataFrame(game)['info']).T['teams'][0]:
         if outcome['win'] == True:
@@ -120,6 +162,11 @@ def getwin(game):
         return 'Red'
     
 def getBuildingDestroyed(game):
+    """
+    Returns a data frame of each instance that an building was destroyed in the first 15 minutes with columns = ['teamId','buildingType','towerType','laneType']. 
+    input: game = lol_watcher.match.timeline_by_match()
+    """
+    
     building_destroyed = []
     for frame in game['info']['frames'][0:16]:
         for event in frame['events']:

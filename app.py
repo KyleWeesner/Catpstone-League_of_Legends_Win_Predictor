@@ -9,43 +9,41 @@ st.write("## This app will predict the chance of your team winning at 15 mins.")
 
 team = st.selectbox("Which team are you on?",
     options=['Blue', 'Red'])
-blue_team_kills = st.number_input("Number of Blue Team Kills?", min_value=0, max_value=100)
-red_team_kills = st.number_input("Number of Red Team Kills?", min_value=0, max_value=100)
+col1, col2 = st.columns(2)
 
-blue_team_visionScore = st.number_input("Sum of Blue Team VisionScore?", min_value=0, max_value=100)
-red_team_visionScore = st.number_input("Sum of Red Team VisionScore?", min_value=0, max_value=100)
+with col1:
+    blue_team_kills = st.number_input("Number of Blue Team Kills?", min_value=0, max_value=100)
+    blue_team_visionScore = st.number_input("Sum of Blue Team VisionScore?", min_value=0, max_value=100)
+    blue_team_assists = st.number_input("Number of Blue Team Assists?", min_value=0, max_value=100)
+    blue_team_cs = st.number_input("Sum of Blue Team Creep Score?", min_value=0, max_value=600)
+    blue_team_level = st.number_input("Sum of Blue Team Levels?", min_value=5, max_value=80)
+    blue_dragons_slained = st.number_input("Number of Blue Team Dragons Slained?", min_value=0, max_value=2)
+    blue_rift_heralds_slained = st.number_input("Number of Blue Team Rift Heralds Slained?", min_value=0, max_value=2)
+    blue_AIR_DRAGON = st.number_input("Number of Blue Team air drags?", min_value=0, max_value=1)
+    blue_EARTH_DRAGON = st.number_input("Number of Blue Team earth drags?", min_value=0, max_value=1)
+    blue_FIRE_DRAGON = st.number_input("Number of Blue Team fire drags?", min_value=0, max_value=1)
+    blue_HEXTECH_DRAGON = st.number_input("Number of Blue Team hextech drags?", min_value=0, max_value=1)
+    blue_WATER_DRAGON = st.number_input("Number of Blue Team water drags?", min_value=0, max_value=1)
+    blue_inhibitors_destroyed = st.number_input("Number of Blue Team Inhibitors Destroyed?", min_value=0, max_value=3)
+    blue_towers_destroyed = st.number_input("Number of Blue Team Towers Destroyed?", min_value=0, max_value=11)
 
-blue_team_assists = st.number_input("Number of Blue Team Assists?", min_value=0, max_value=100)
-red_team_assists = st.number_input("Number of Red Team Assists?", min_value=0, max_value=100)
 
-blue_team_cs = st.number_input("Sum of Blue Team Creep Score?", min_value=0, max_value=600)
-red_team_cs = st.number_input("Sum of Red Team Creep Score?", min_value=0, max_value=600)
 
-blue_team_level = st.number_input("Sum of Blue Team Levels?", min_value=5, max_value=80)
-red_team_level = st.number_input("Sum of Red Team Levels?", min_value=5, max_value=80)
-
-blue_dragons_slained = st.number_input("Number of Blue Team Dragons Slained?", min_value=0, max_value=2)
-red_dragons_slained = st.number_input("Number of Red Team Dragons Slained?", min_value=0, max_value=2)
-
-blue_rift_heralds_slained = st.number_input("Number of Blue Team Rift Heralds Slained?", min_value=0, max_value=2)
-red_rifts_heralds_slained = st.number_input("Number of Red Team Rift Heralds Slained?", min_value=0, max_value=2)
-
-blue_AIR_DRAGON = st.number_input("Number of Blue Team air drags?", min_value=0, max_value=1)
-red_AIR_DRAGON = st.number_input("Number of Red Team air drags?", min_value=0, max_value=1)
-blue_EARTH_DRAGON = st.number_input("Number of Blue Team earth drags?", min_value=0, max_value=1)
-red_EARTH_DRAGON = st.number_input("Number of Red Team earth drags?", min_value=0, max_value=1)
-blue_FIRE_DRAGON = st.number_input("Number of Blue Team fire drags?", min_value=0, max_value=1)
-red_FIRE_DRAGON = st.number_input("Number of Red Team fire drags?", min_value=0, max_value=1)
-blue_HEXTECH_DRAGON = st.number_input("Number of Blue Team hextech drags?", min_value=0, max_value=1)
-red_HEXTECH_DRAGON = st.number_input("Number of Red Team hextech drags?", min_value=0, max_value=1)
-blue_WATER_DRAGON = st.number_input("Number of Blue Team water drags?", min_value=0, max_value=1)
-red_WATER_DRAGON = st.number_input("Number of Red Team water drags?", min_value=0, max_value=1)
-
-blue_inhibitors_destroyed = st.number_input("Number of Blue Team Inhibitors Destroyed?", min_value=0, max_value=3)
-red_inhibitors_destroyed = st.number_input("Number of Red Inhibitors Destroyed?", min_value=0, max_value=3)
-
-blue_towers_destroyed = st.number_input("Number of Blue Team Towers Destroyed?", min_value=0, max_value=11)
-red_towers_destroyed = st.number_input("Number of Red Towers Destroyed?", min_value=0, max_value=11)
+with col2:
+    red_team_kills = st.number_input("Number of Red Team Kills?", min_value=0, max_value=100)
+    red_team_visionScore = st.number_input("Sum of Red Team VisionScore?", min_value=0, max_value=100)
+    red_team_assists = st.number_input("Number of Red Team Assists?", min_value=0, max_value=100)
+    red_team_cs = st.number_input("Sum of Red Team Creep Score?", min_value=0, max_value=600)
+    red_team_level = st.number_input("Sum of Red Team Levels?", min_value=5, max_value=80)
+    red_dragons_slained = st.number_input("Number of Red Team Dragons Slained?", min_value=0, max_value=2)
+    red_rifts_heralds_slained = st.number_input("Number of Red Team Rift Heralds Slained?", min_value=0, max_value=2)
+    red_AIR_DRAGON = st.number_input("Number of Red Team air drags?", min_value=0, max_value=1)
+    red_EARTH_DRAGON = st.number_input("Number of Red Team earth drags?", min_value=0, max_value=1)
+    red_FIRE_DRAGON = st.number_input("Number of Red Team fire drags?", min_value=0, max_value=1)
+    red_HEXTECH_DRAGON = st.number_input("Number of Red Team hextech drags?", min_value=0, max_value=1)
+    red_WATER_DRAGON = st.number_input("Number of Red Team water drags?", min_value=0, max_value=1)
+    red_inhibitors_destroyed = st.number_input("Number of Red Inhibitors Destroyed?", min_value=0, max_value=3)
+    red_towers_destroyed = st.number_input("Number of Red Towers Destroyed?", min_value=0, max_value=11)
 
 
 f=open('./Untitled_Folder/best_model_logreg_T', 'rb')
