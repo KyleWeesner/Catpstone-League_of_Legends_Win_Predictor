@@ -90,12 +90,14 @@ My model can be a useful application in the Blitz App for League of Legend gamer
 │       ├── best_model_logreg_T
 │       ├── data_gathering_functions.py
 │       └── matchId.txt
-├── app.py
 ├── .gitignore
+├── Modeling.ipynb
+├── README.md
+├── Web_scraping_for_Final_Dataset.ipynb
+├── app.py
 ├── data_gathering_functions.py
-├──environment.yml
-├── presentation.pdf
-└── README.md
+├── environment.yml
+└── presentation.pdf
 ```
  
 ### Next Steps
